@@ -1,4 +1,4 @@
-from src.NLP_textSummarizer.pipeline.model_trainer import ModelTrainerTrainingPipeline
+from src.NLP_textSummarizer.pipeline.model_trainer_pipeline import ModelTrainerTrainingPipeline
 from src.NLP_textSummarizer.logging import logger
 from src.NLP_textSummarizer.pipeline.data_ingestion_pipeline import DataIngestionTrainingPipeline
 from src.NLP_textSummarizer.pipeline.data_transformation_pipeline import DataTransformationTrainingPipeline
@@ -37,3 +37,16 @@ try:
 except Exception as e:
     logger.exception(e)
     raise e
+
+
+STAGE_NAME = "Model Evaluation stage"
+try: 
+   logger.info(f"*******************")
+   logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+   model_evaluation = ModelEvaluationTrainingPipeline()
+   model_evaluation.initiate_model_evaluation()
+   logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+except Exception as e:
+        logger.exception(e)
+        raise e
+
